@@ -130,11 +130,11 @@
     },
     {
       "name": "OISD Blocklist Small",
-      "url": "https://small.oisd.nl"
+      "url": "https://raw.githubusercontent.com/sjhgvr/oisd/main/oisd_small.txt"
     },
     {
       "name": "OISD Blocklist Big",
-      "url": "https://big.oisd.nl"
+      "url": "https://raw.githubusercontent.com/sjhgvr/oisd/main/oisd_big.txt"
     },
     {
       "name": "Energized Protection Spark",
@@ -173,35 +173,35 @@
       "url": "https://urlhaus.abuse.ch/downloads/hostfile/"
     },
     {
-      "name" : "OpenPhish",
+      "name": "OpenPhish",
       "url": "https://openphish.com/feed.txt"
     },
     {
-      "name" : "hagezi_dns-blocklists - LIGHT",
+      "name": "hagezi_dns-blocklists - LIGHT",
       "url": "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/light.txt"
     },
     {
-      "name" : "hagezi_dns-blocklists - NORMAL",
+      "name": "hagezi_dns-blocklists - NORMAL",
       "url": "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/multi.txt"
     },
     {
-      "name" : "hagezi_dns-blocklists - PRO",
+      "name": "hagezi_dns-blocklists - PRO",
       "url": "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/pro.txt"
     },
     {
-      "name" : "hagezi_dns-blocklists - PRO Plus Plus",
+      "name": "hagezi_dns-blocklists - PRO Plus Plus",
       "url": "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/pro.plus.txt"
     },
     {
-      "name" : "hagezi_dns-blocklists - ULTIMATE",
+      "name": "hagezi_dns-blocklists - ULTIMATE",
       "url": "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/ultimate.txt"
     },
     {
-      "name" : "hagezi_dns-blocklists - Threat Intelligence Feeds",
+      "name": "hagezi_dns-blocklists - Threat Intelligence Feeds",
       "url": "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/tif.txt"
     }
   ],
-  "IP_Lists":[
+  "IP_Lists": [
     {
       "name": "CINS_army",
       "url": "https://cinsarmy.com/list/ci-badguys.txt"
