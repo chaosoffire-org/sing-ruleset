@@ -1,222 +1,224 @@
 {
-  "Adguard_Blocklists": [
-    {
-      "name": "EasyList",
-      "url": "https://easylist.to/easylist/easylist.txt"
-    },
-    {
-      "name": "EasyList Cookie List",
-      "url": "https://secure.fanboy.co.nz/fanboy-cookiemonster.txt"
-    },
-    {
-      "name": "EasyPrivacy",
-      "url": "https://easylist.to/easylist/easyprivacy.txt"
-    },
-    {
-      "name": "Fanboy's Annoyance List",
-      "url": "https://secure.fanboy.co.nz/fanboy-annoyance.txt"
-    },
-    {
-      "name": "Fanboy's Social Blocking List",
-      "url": "https://easylist.to/easylist/fanboy-social.txt"
-    },
-    {
-      "name": "ABPindo",
-      "url": "https://raw.githubusercontent.com/heradhis/indonesianadblockrules/master/subscriptions/abpindo.txt"
-    },
-    {
-      "name": "ABPVN List",
-      "url": "https://abpvn.com/filter/abpvn-IPl6HE.txt"
-    },
-    {
-      "name": "Bulgarian list",
-      "url": "http://stanev.org/abp/adblock_bg.txt"
-    },
-    {
-      "name": "Dandelion Sprout's Nordic Filters",
-      "url": "https://raw.githubusercontent.com/DandelionSprout/adfilt/master/NorwegianExperimentalList%20alternate%20versions/NordicFiltersABP-Inclusion.txt"
-    },
-    {
-      "name": "EasyList China",
-      "url": "https://easylist-downloads.adblockplus.org/easylistchina.txt"
-    },
-    {
-      "name": "EasyList Czech and Slovak",
-      "url": "https://raw.githubusercontent.com/tomasko126/easylistczechandslovak/master/filters.txt"
-    },
-    {
-      "name": "EasyList Dutch",
-      "url": "https://easylist-downloads.adblockplus.org/easylistdutch.txt"
-    },
-    {
-      "name": "EasyList Germany",
-      "url": "https://easylist.to/easylistgermany/easylistgermany.txt"
-    },
-    {
-      "name": "EasyList Hebrew",
-      "url": "https://raw.githubusercontent.com/easylist/EasyListHebrew/master/EasyListHebrew.txt"
-    },
-    {
-      "name": "EasyList Italy",
-      "url": "https://easylist-downloads.adblockplus.org/easylistitaly.txt"
-    },
-    {
-      "name": "EasyList Lithuania",
-      "url": "https://raw.githubusercontent.com/EasyList-Lithuania/easylist_lithuania/master/easylistlithuania.txt"
-    },
-    {
-      "name": "EasyList Polish",
-      "url": "https://easylist-downloads.adblockplus.org/easylistpolish.txt"
-    },
-    {
-      "name": "EasyList Portuguese",
-      "url": "https://easylist-downloads.adblockplus.org/easylistportuguese.txt"
-    },
-    {
-      "name": "EasyList Spanish",
-      "url": "https://easylist-downloads.adblockplus.org/easylistspanish.txt"
-    },
-    {
-      "name": "IndianList",
-      "url": "https://easylist-downloads.adblockplus.org/indianlist.txt"
-    },
-    {
-      "name": "KoreanList",
-      "url": "https://easylist-downloads.adblockplus.org/koreanlist.txt"
-    },
-    {
-      "name": "Latvian List",
-      "url": "https://raw.githubusercontent.com/Latvian-List/adblock-latvian/master/lists/latvian-list.txt"
-    },
-    {
-      "name": "Liste AR",
-      "url": "https://easylist-downloads.adblockplus.org/Liste_AR.txt"
-    },
-    {
-      "name": "Liste FR",
-      "url": "https://easylist-downloads.adblockplus.org/liste_fr.txt"
-    },
-    {
-      "name": "ROList",
-      "url": "https://www.zoso.ro/pages/rolist.txt"
-    },
-    {
-      "name": "RU AdList",
-      "url": "https://easylist-downloads.adblockplus.org/advblock.txt"
-    },
-    {
-      "name": "Adblock Warning Removal List",
-      "url": "https://easylist-downloads.adblockplus.org/antiadblockfilters.txt"
-    },
-    {
-      "name": "EasyList without element hiding",
-      "url": "https://easylist-downloads.adblockplus.org/easylist_noelemhide.txt"
-    },
-    {
-      "name": "EasyList without rules for adult sites",
-      "url": "https://easylist-downloads.adblockplus.org/easylist_noadult.txt"
-    },
-    {
-      "name": "EasyPrivacy without rules for international domains",
-      "url": "https://easylist-downloads.adblockplus.org/easyprivacy_nointernational.txt"
-    },
-    {
-      "name": "AdGuard DNS Filter",
-      "url": "https://adguardteam.github.io/AdGuardSDNSFilter/Filters/filter.txt"
-    },
-    {
-      "name": "GoodbyeAds",
-      "url": "https://raw.githubusercontent.com/jerryn70/GoodbyeAds/master/Formats/GoodbyeAds-AdBlock-Filter.txt"
-    },
-    {
-      "name": "OISD Blocklist Small",
-      "url": "https://raw.githubusercontent.com/sjhgvr/oisd/main/oisd_small.txt"
-    },
-    {
-      "name": "OISD Blocklist Big",
-      "url": "https://raw.githubusercontent.com/sjhgvr/oisd/main/oisd_big.txt"
-    },
-    {
-      "name": "Energized Protection Spark",
-      "url": "https://energized.pro/spark/adblock.txt"
-    },
-    {
-      "name": "Energized Protection Blu",
-      "url": "https://energized.pro/blu/adblock.txt"
-    },
-    {
-      "name": "Energized Protection Ultimate",
-      "url": "https://energized.pro/ultimate/adblock.txt"
-    },
-    {
-      "name": "Energized Protection Nsfw",
-      "url": "https://energized.pro/nsfw/adblock.txt"
-    },
-    {
-      "name": "Energized Protection Antipopads-re",
-      "url": "https://energized.pro/antipopads-re/adblock.txt"
-    },
-    {
-      "name": "Energized Protection Social",
-      "url": "https://energized.pro/social/adblock.txt"
-    },
-    {
-      "name": "Energized Protection Extreme",
-      "url": "https://energized.pro/extreme/adblock.txt"
-    },
-    {
-      "name": "Energized Protection Regional",
-      "url": "https://energized.pro/regional/adblock.txt"
-    },
-    {
-      "name": "Abuse_urlhaus",
-      "url": "https://urlhaus.abuse.ch/downloads/hostfile/"
-    },
-    {
-      "name": "OpenPhish",
-      "url": "https://openphish.com/feed.txt"
-    },
-    {
-      "name": "hagezi_dns-blocklists - LIGHT",
-      "url": "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/light.txt"
-    },
-    {
-      "name": "hagezi_dns-blocklists - NORMAL",
-      "url": "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/multi.txt"
-    },
-    {
-      "name": "hagezi_dns-blocklists - PRO",
-      "url": "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/pro.txt"
-    },
-    {
-      "name": "hagezi_dns-blocklists - PRO Plus Plus",
-      "url": "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/pro.plus.txt"
-    },
-    {
-      "name": "hagezi_dns-blocklists - ULTIMATE",
-      "url": "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/ultimate.txt"
-    },
-    {
-      "name": "hagezi_dns-blocklists - Threat Intelligence Feeds",
-      "url": "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/tif.txt"
-    }
-  ],
-  "IP_Lists": [
-    {
-      "name": "CINS_army",
-      "url": "https://cinsarmy.com/list/ci-badguys.txt"
-    },
-    {
-      "name": "ET_Block",
-      "url": "https://rules.emergingthreats.net/fwrules/emerging-Block-IPs.txt"
-    },
-    {
-      "name": "ET_Comp",
-      "url": "https://rules.emergingthreats.net/blockrules/compromised-ips.txt"
-    },
-    {
-      "name": "ISC_Block",
-      "url": "https://isc.sans.edu/block.txt"
-    }
-  ]
+  "version": "1",
+  "sources": {
+    "adguard": [
+      {
+        "name": "EasyList",
+        "url": "https://easylist.to/easylist/easylist.txt"
+      },
+      {
+        "name": "EasyList Cookie List",
+        "url": "https://secure.fanboy.co.nz/fanboy-cookiemonster.txt"
+      },
+      {
+        "name": "EasyPrivacy",
+        "url": "https://easylist.to/easylist/easyprivacy.txt"
+      },
+      {
+        "name": "Fanboy's Annoyance List",
+        "url": "https://secure.fanboy.co.nz/fanboy-annoyance.txt"
+      },
+      {
+        "name": "Fanboy's Social Blocking List",
+        "url": "https://easylist.to/easylist/fanboy-social.txt"
+      },
+      {
+        "name": "ABPindo",
+        "url": "https://raw.githubusercontent.com/heradhis/indonesianadblockrules/master/subscriptions/abpindo.txt"
+      },
+      {
+        "name": "ABPVN List",
+        "url": "https://abpvn.com/filter/abpvn-IPl6HE.txt"
+      },
+      {
+        "name": "Bulgarian list",
+        "url": "http://stanev.org/abp/adblock_bg.txt"
+      },
+      {
+        "name": "Dandelion Sprout's Nordic Filters",
+        "url": "https://raw.githubusercontent.com/DandelionSprout/adfilt/master/NorwegianExperimentalList%20alternate%20versions/NordicFiltersABP-Inclusion.txt"
+      },
+      {
+        "name": "EasyList China",
+        "url": "https://easylist-downloads.adblockplus.org/easylistchina.txt"
+      },
+      {
+        "name": "EasyList Czech and Slovak",
+        "url": "https://raw.githubusercontent.com/tomasko126/easylistczechandslovak/master/filters.txt"
+      },
+      {
+        "name": "EasyList Dutch",
+        "url": "https://easylist-downloads.adblockplus.org/easylistdutch.txt"
+      },
+      {
+        "name": "EasyList Germany",
+        "url": "https://easylist.to/easylistgermany/easylistgermany.txt"
+      },
+      {
+        "name": "EasyList Hebrew",
+        "url": "https://raw.githubusercontent.com/easylist/EasyListHebrew/master/EasyListHebrew.txt"
+      },
+      {
+        "name": "EasyList Italy",
+        "url": "https://easylist-downloads.adblockplus.org/easylistitaly.txt"
+      },
+      {
+        "name": "EasyList Lithuania",
+        "url": "https://raw.githubusercontent.com/EasyList-Lithuania/easylist_lithuania/master/easylistlithuania.txt"
+      },
+      {
+        "name": "EasyList Polish",
+        "url": "https://easylist-downloads.adblockplus.org/easylistpolish.txt"
+      },
+      {
+        "name": "EasyList Portuguese",
+        "url": "https://easylist-downloads.adblockplus.org/easylistportuguese.txt"
+      },
+      {
+        "name": "EasyList Spanish",
+        "url": "https://easylist-downloads.adblockplus.org/easylistspanish.txt"
+      },
+      {
+        "name": "IndianList",
+        "url": "https://easylist-downloads.adblockplus.org/indianlist.txt"
+      },
+      {
+        "name": "KoreanList",
+        "url": "https://easylist-downloads.adblockplus.org/koreanlist.txt"
+      },
+      {
+        "name": "Latvian List",
+        "url": "https://raw.githubusercontent.com/Latvian-List/adblock-latvian/master/lists/latvian-list.txt"
+      },
+      {
+        "name": "Liste AR",
+        "url": "https://easylist-downloads.adblockplus.org/Liste_AR.txt"
+      },
+      {
+        "name": "Liste FR",
+        "url": "https://easylist-downloads.adblockplus.org/liste_fr.txt"
+      },
+      {
+        "name": "ROList",
+        "url": "https://www.zoso.ro/pages/rolist.txt"
+      },
+      {
+        "name": "RU AdList",
+        "url": "https://easylist-downloads.adblockplus.org/advblock.txt"
+      },
+      {
+        "name": "Adblock Warning Removal List",
+        "url": "https://easylist-downloads.adblockplus.org/antiadblockfilters.txt"
+      },
+      {
+        "name": "EasyList without element hiding",
+        "url": "https://easylist-downloads.adblockplus.org/easylist_noelemhide.txt"
+      },
+      {
+        "name": "EasyList without rules for adult sites",
+        "url": "https://easylist-downloads.adblockplus.org/easylist_noadult.txt"
+      },
+      {
+        "name": "EasyPrivacy without rules for international domains",
+        "url": "https://easylist-downloads.adblockplus.org/easyprivacy_nointernational.txt"
+      },
+      {
+        "name": "AdGuard DNS Filter",
+        "url": "https://adguardteam.github.io/AdGuardSDNSFilter/Filters/filter.txt"
+      },
+      {
+        "name": "GoodbyeAds",
+        "url": "https://raw.githubusercontent.com/jerryn70/GoodbyeAds/master/Formats/GoodbyeAds-AdBlock-Filter.txt"
+      },
+      {
+        "name": "OISD Blocklist Small",
+        "url": "https://raw.githubusercontent.com/sjhgvr/oisd/main/oisd_small.txt"
+      },
+      {
+        "name": "OISD Blocklist Big",
+        "url": "https://raw.githubusercontent.com/sjhgvr/oisd/main/oisd_big.txt"
+      },
+      {
+        "name": "Energized Protection Spark",
+        "url": "https://energized.pro/spark/adblock.txt"
+      },
+      {
+        "name": "Energized Protection Blu",
+        "url": "https://energized.pro/blu/adblock.txt"
+      },
+      {
+        "name": "Energized Protection Ultimate",
+        "url": "https://energized.pro/ultimate/adblock.txt"
+      },
+      {
+        "name": "Energized Protection Nsfw",
+        "url": "https://energized.pro/nsfw/adblock.txt"
+      },
+      {
+        "name": "Energized Protection Antipopads-re",
+        "url": "https://energized.pro/antipopads-re/adblock.txt"
+      },
+      {
+        "name": "Energized Protection Social",
+        "url": "https://energized.pro/social/adblock.txt"
+      },
+      {
+        "name": "Energized Protection Extreme",
+        "url": "https://energized.pro/extreme/adblock.txt"
+      },
+      {
+        "name": "Energized Protection Regional",
+        "url": "https://energized.pro/regional/adblock.txt"
+      },
+      {
+        "name": "Abuse_urlhaus",
+        "url": "https://urlhaus.abuse.ch/downloads/hostfile/"
+      },
+      {
+        "name": "OpenPhish",
+        "url": "https://openphish.com/feed.txt"
+      },
+      {
+        "name": "hagezi_dns-blocklists - LIGHT",
+        "url": "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/light.txt"
+      },
+      {
+        "name": "hagezi_dns-blocklists - NORMAL",
+        "url": "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/multi.txt"
+      },
+      {
+        "name": "hagezi_dns-blocklists - PRO",
+        "url": "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/pro.txt"
+      },
+      {
+        "name": "hagezi_dns-blocklists - PRO Plus Plus",
+        "url": "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/pro.plus.txt"
+      },
+      {
+        "name": "hagezi_dns-blocklists - ULTIMATE",
+        "url": "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/ultimate.txt"
+      },
+      {
+        "name": "hagezi_dns-blocklists - Threat Intelligence Feeds",
+        "url": "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/tif.txt"
+      }
+    ],
+    "iplists": [
+      {
+        "name": "CINS_army",
+        "url": "https://cinsarmy.com/list/ci-badguys.txt",
+        "type": "iplist"
+      },
+      {
+        "name": "ET_Block",
+        "url": "https://rules.emergingthreats.net/fwrules/emerging-Block-IPs.txt",
+        "type": "iplist"
+      },
+      {
+        "name": "ET_Comp",
+        "url": "https://rules.emergingthreats.net/blockrules/compromised-ips.txt",
+        "type": "iplist"
+      }
+    ]
+  }
 }

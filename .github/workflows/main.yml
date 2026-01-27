@@ -3,12 +3,11 @@ name: Generate and Commit File
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 23 * * *'
+    - cron: '0 16 * * *'
 
 jobs:
   generate-and-commit:
     runs-on: ubuntu-latest
-
     steps:
       - name: Set variables
         run: |
@@ -22,7 +21,8 @@ jobs:
       - name: Set up Golang
         uses: actions/setup-go@v5
         with:
-          go-version: '1.24.3'
+          go-version: '1.25'
+          cache: true
 
       - name: Install sing-box
         run: |
@@ -33,13 +33,16 @@ jobs:
           sudo apt-get update
           sudo apt-get install sing-box -y
 
+      - name: Test
+        run: go test -v ./...
+
       - name: Build sing-ruleset
         run: go build -o ./sing-ruleset-linux-amd64 ./main.go
 
       - name: Run
         run: |
           chmod +x ./sing-ruleset-linux-amd64
-          ./sing-ruleset-linux-amd64
+          ./sing-ruleset-linux-amd64 run --workdir . --output output --config config.json
 
       - name: Commit and Push changes
         env:
