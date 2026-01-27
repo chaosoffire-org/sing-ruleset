@@ -8,6 +8,7 @@ import (
 	"os"
 	"path/filepath"
 	"sing-ruleset/internal/domain"
+	"strings"
 	"time"
 )
 
@@ -20,6 +21,10 @@ func NewHttpDownloader() *HttpDownloader {
 }
 
 func (d *HttpDownloader) Download(ctx context.Context, url string, filePath string) error {
+	if url == "" || (!strings.HasPrefix(url, "http://") && !strings.HasPrefix(url, "https://")) {
+		return fmt.Errorf("url is not valid, url: %s", url)
+	}
+
 	// Create the directory if it doesn't exist
 	if err := os.MkdirAll(filepath.Dir(filePath), os.ModePerm); err != nil {
 		return fmt.Errorf("failed to create directory: %w", err)

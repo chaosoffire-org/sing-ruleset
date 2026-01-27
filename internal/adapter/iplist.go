@@ -83,6 +83,8 @@ func (p *IPListProcessor) Process(sourcePath string, targetPath string) error {
 	enc := json.NewEncoder(outFile)
 	enc.SetIndent("", "  ")
 	if err := enc.Encode(config); err != nil {
+		outFile.Close()
+		os.Remove(targetPath)
 		return fmt.Errorf("failed to encode json: %w", err)
 	}
 

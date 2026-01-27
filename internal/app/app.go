@@ -35,29 +35,46 @@ func (a *Application) GenerateRules(ctx context.Context, configPath string, outp
 		return fmt.Errorf("failed to load config: %w", err)
 	}
 
+	length := 0
+	for _, values := range config.Sources {
+		length += len(values)
+	}
+	if length == 0 {
+		return fmt.Errorf("no sources found in config")
+	}
+
 	sem := make(chan struct{}, workers)
+	errCh := make(chan error, length)
+
 	var wg sync.WaitGroup
+	wg.Add(length)
 
 	for category, sources := range config.Sources {
 		for _, source := range sources {
-			wg.Add(1)
 			sem <- struct{}{} // Acquire token
-
-			go func(cat string, src domain.Source) {
+			go func(errCh chan<- error, cat string, src domain.Source) {
 				defer wg.Done()
 				defer func() { <-sem }() // Release token
 
 				err := a.processSource(ctx, cat, src, outputDir)
 				if err != nil {
-					logrus.Errorf("Error processing %s/%s: %v", cat, src.Name, err)
+					// logrus.Errorf("Error processing %s/%s: %v", cat, src.Name, err)
+					errCh <- fmt.Errorf("Error processing %s/%s: %v", cat, src.Name, err)
 				} else {
 					logrus.Infof("Successfully processed %s/%s", cat, src.Name)
 				}
-			}(category, source)
+			}(errCh, category, source)
 		}
 	}
 
 	wg.Wait()
+	close(sem)
+	close(errCh)
+
+	for err := range errCh {
+		logrus.Error(err.Error())
+	}
+
 	return nil
 }
 
