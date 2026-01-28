@@ -8,15 +8,18 @@ import (
 	"sing-ruleset/internal/domain"
 )
 
+// SingBoxConverter implements domain.RuleConverter using sing-box CLI.
 type SingBoxConverter struct{}
 
 // Ensure SingBoxConverter implements domain.RuleConverter
 var _ domain.RuleConverter = (*SingBoxConverter)(nil)
 
+// NewSingBoxConverter creates a new SingBoxConverter instance.
 func NewSingBoxConverter() *SingBoxConverter {
 	return &SingBoxConverter{}
 }
 
+// Convert converts a source file to SRS format using sing-box CLI.
 func (c *SingBoxConverter) Convert(ctx context.Context, sourcePath string, targetPath string, ruleType string) error {
 	var cmd *exec.Cmd
 

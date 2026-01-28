@@ -1,6 +1,7 @@
 package adapter_test
 
 import (
+	"context"
 	"encoding/json"
 	"os"
 	"path/filepath"
@@ -17,6 +18,7 @@ func TestIPListProcessor_Process(t *testing.T) {
 		input       string
 		wantErr     bool
 		expectedIPs int
+		ctx         context.Context
 	}{
 		{
 			name: "Valid IPs",
@@ -28,6 +30,7 @@ func TestIPListProcessor_Process(t *testing.T) {
 2001:db8::/32`,
 			wantErr:     false,
 			expectedIPs: 3,
+			ctx:         context.Background(),
 		},
 		{
 			name: "Invalid IPs",
@@ -37,12 +40,27 @@ invalid-ip
 `,
 			wantErr:     true, // Code returns error if no valid IPs found
 			expectedIPs: 0,
+			ctx:         context.Background(),
 		},
 		{
 			name:        "Empty File",
 			input:       "",
 			wantErr:     true,
 			expectedIPs: 0,
+			ctx:         context.Background(),
+		},
+		{
+			name: "Context Cancelled",
+			input: `
+192.168.1.1
+`,
+			wantErr:     true,
+			expectedIPs: 0,
+			ctx: func() context.Context {
+				ctx, cancel := context.WithCancel(context.Background())
+				cancel()
+				return ctx
+			}(),
 		},
 	}
 
@@ -56,7 +74,7 @@ invalid-ip
 				t.Fatal(err)
 			}
 
-			err = processor.Process(inputFile, outputFile)
+			err = processor.Process(tt.ctx, inputFile, outputFile)
 			if (err != nil) != tt.wantErr {
 				t.Errorf("Process() error = %v, wantErr %v", err, tt.wantErr)
 				return
@@ -74,6 +92,7 @@ invalid-ip
 					if tt.expectedIPs > 0 {
 						t.Errorf("Expected output, got empty file")
 					}
+
 					return
 				}
 
@@ -82,6 +101,7 @@ invalid-ip
 						IPCidr []string `json:"ip_cidr"`
 					} `json:"rules"`
 				}
+
 				if err := json.Unmarshal(data, &result); err != nil {
 					t.Fatal(err)
 				}

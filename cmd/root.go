@@ -1,10 +1,13 @@
+// Package cmd provides the command-line interface for sing-ruleset.
 package cmd
 
 import (
 	"context"
 	"fmt"
 	"log"
+	"net/http"
 	"os"
+	"os/signal"
 	"path/filepath"
 	"runtime"
 	"sing-ruleset/internal/adapter"
@@ -12,6 +15,8 @@ import (
 	"sing-ruleset/internal/domain"
 	"sing-ruleset/internal/infrastructure/repository"
 	"sing-ruleset/internal/infrastructure/service"
+	"syscall"
+	"time"
 
 	"github.com/spf13/cobra"
 )
@@ -32,7 +37,7 @@ var rootCmd = &cobra.Command{
 var runCmd = &cobra.Command{
 	Use:   "run",
 	Short: "Start the rule generation process",
-	RunE: func(cmd *cobra.Command, args []string) error {
+	RunE: func(_ *cobra.Command, _ []string) error {
 		// handle relative paths
 		if !filepath.IsAbs(workDir) {
 			wd, err := os.Getwd()
@@ -61,19 +66,34 @@ var runCmd = &cobra.Command{
 
 		// Initialize Infrastructure
 		var repo domain.Repository = repository.NewFileConfigRepository()
-		var downloader domain.Downloader = service.NewHttpDownloader()
+		client := &http.Client{
+			Timeout: 5 * time.Minute,
+		}
+		var downloader domain.Downloader = service.NewHTTPDownloader(client)
 		var ruleConverter domain.RuleConverter = service.NewSingBoxConverter()
 		var ruleCompiler domain.RuleCompiler = service.NewSingBoxRuleCompiler()
 		var ipProcessor domain.SourceProcessor = adapter.NewIPListProcessor()
 
 		// Initialize Application
-		application := app.NewApplication(repo, downloader, ruleConverter, ruleCompiler, ipProcessor)
+		ctx, cancel := context.WithCancel(context.Background())
+		sigChan := make(chan os.Signal, 1)
+		signal.Notify(sigChan, syscall.SIGINT, syscall.SIGTERM)
+
+		defer cancel()
+
+		go func() {
+			<-sigChan
+			cancel()
+		}()
+
+		application := app.NewApplication(ctx, repo, downloader, ruleConverter, ruleCompiler, ipProcessor)
 
 		// Execute
-		return application.GenerateRules(context.Background(), configPath, outputDir, workers)
+		return application.GenerateRules(configPath, outputDir, workers)
 	},
 }
 
+// Execute runs the root command.
 func Execute() {
 	if err := rootCmd.Execute(); err != nil {
 		fmt.Println(err)

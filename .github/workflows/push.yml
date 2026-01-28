@@ -11,6 +11,9 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: read
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -32,3 +35,6 @@ jobs:
 
       - name: Test
         run: go test -v ./...
+
+      - name: Lint
+        uses: golangci/golangci-lint-action@v9

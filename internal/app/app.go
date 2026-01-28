@@ -1,3 +1,4 @@
+// Package app provides the application layer for orchestrating rule generation.
 package app
 
 import (
@@ -7,11 +8,14 @@ import (
 	"path/filepath"
 	"sing-ruleset/internal/domain"
 	"sync"
+	"time"
 
 	"github.com/sirupsen/logrus"
 )
 
+// Application orchestrates the rule generation process.
 type Application struct {
+	GlobalContext   context.Context
 	Repo            domain.Repository
 	Downloader      domain.Downloader
 	RuleConverter   domain.RuleConverter // For Adguard -> SRS
@@ -19,8 +23,10 @@ type Application struct {
 	IPListProcessor domain.SourceProcessor
 }
 
-func NewApplication(repo domain.Repository, downloader domain.Downloader, ruleConverter domain.RuleConverter, ruleCompiler domain.RuleCompiler, ipProcessor domain.SourceProcessor) *Application {
+// NewApplication creates a new Application with the given dependencies.
+func NewApplication(ctx context.Context, repo domain.Repository, downloader domain.Downloader, ruleConverter domain.RuleConverter, ruleCompiler domain.RuleCompiler, ipProcessor domain.SourceProcessor) *Application {
 	return &Application{
+		GlobalContext:   ctx,
 		Repo:            repo,
 		Downloader:      downloader,
 		RuleConverter:   ruleConverter,
@@ -29,7 +35,8 @@ func NewApplication(repo domain.Repository, downloader domain.Downloader, ruleCo
 	}
 }
 
-func (a *Application) GenerateRules(ctx context.Context, configPath string, outputDir string, workers int) error {
+// GenerateRules generates rule sets from the given configuration.
+func (a *Application) GenerateRules(configPath string, outputDir string, workers int) error {
 	config, err := a.Repo.GetConfig(configPath)
 	if err != nil {
 		return fmt.Errorf("failed to load config: %w", err)
@@ -39,6 +46,7 @@ func (a *Application) GenerateRules(ctx context.Context, configPath string, outp
 	for _, values := range config.Sources {
 		length += len(values)
 	}
+
 	if length == 0 {
 		return fmt.Errorf("no sources found in config")
 	}
@@ -47,23 +55,27 @@ func (a *Application) GenerateRules(ctx context.Context, configPath string, outp
 	errCh := make(chan error, length)
 
 	var wg sync.WaitGroup
-	wg.Add(length)
-
+loop:
 	for category, sources := range config.Sources {
 		for _, source := range sources {
-			sem <- struct{}{} // Acquire token
-			go func(errCh chan<- error, cat string, src domain.Source) {
-				defer wg.Done()
-				defer func() { <-sem }() // Release token
+			select {
+			case <-a.GlobalContext.Done():
+				break loop
+			case sem <- struct{}{}: // Acquire token
+				wg.Add(1)
+				go func(errCh chan<- error, cat string, src domain.Source) {
+					defer wg.Done()
+					defer func() { <-sem }() // Release token
 
-				err := a.processSource(ctx, cat, src, outputDir)
-				if err != nil {
-					// logrus.Errorf("Error processing %s/%s: %v", cat, src.Name, err)
-					errCh <- fmt.Errorf("Error processing %s/%s: %v", cat, src.Name, err)
-				} else {
-					logrus.Infof("Successfully processed %s/%s", cat, src.Name)
-				}
-			}(errCh, category, source)
+					err := a.processSource(cat, src, outputDir)
+					if err != nil {
+						errCh <- fmt.Errorf("error processing %s/%s: %v", cat, src.Name, err)
+					} else {
+						logrus.Infof("Successfully processed %s/%s", cat, src.Name)
+					}
+
+				}(errCh, category, source)
+			}
 		}
 	}
 
@@ -78,8 +90,9 @@ func (a *Application) GenerateRules(ctx context.Context, configPath string, outp
 	return nil
 }
 
-func (a *Application) processSource(ctx context.Context, category string, source domain.Source, outputDir string) error {
+func (a *Application) processSource(category string, source domain.Source, outputDir string) error {
 	categoryPath := filepath.Join(outputDir, category)
+
 	if err := os.MkdirAll(categoryPath, os.ModePerm); err != nil {
 		return fmt.Errorf("failed to create category directory: %w", err)
 	}
@@ -88,6 +101,9 @@ func (a *Application) processSource(ctx context.Context, category string, source
 	srsFilePath := filepath.Join(categoryPath, source.Name+".srs")
 
 	// 1. Download
+	ctx, cancel := context.WithTimeout(a.GlobalContext, 5*time.Minute)
+	defer cancel()
+
 	if err := a.Downloader.Download(ctx, source.URL, rawFilePath); err != nil {
 		return fmt.Errorf("download failed: %w", err)
 	}
@@ -96,16 +112,25 @@ func (a *Application) processSource(ctx context.Context, category string, source
 	case "iplist":
 		jsonFilePath := filepath.Join(categoryPath, source.Name+".json")
 
-		if err := a.IPListProcessor.Process(rawFilePath, jsonFilePath); err != nil {
+		ctx, cancel = context.WithTimeout(a.GlobalContext, 5*time.Minute)
+		defer cancel()
+
+		if err := a.IPListProcessor.Process(ctx, rawFilePath, jsonFilePath); err != nil {
 			return fmt.Errorf("iplist processing failed: %w", err)
 		}
 
-		if err := a.RuleCompiler.Compile(ctx, jsonFilePath, srsFilePath); err != nil {
+		compileCtx, compileCancel := context.WithTimeout(a.GlobalContext, 5*time.Minute)
+		defer compileCancel()
+
+		if err := a.RuleCompiler.Compile(compileCtx, jsonFilePath, srsFilePath); err != nil {
 			return fmt.Errorf("sing-box compile failed: %w", err)
 		}
 
 	default:
-		if err := a.RuleConverter.Convert(ctx, rawFilePath, srsFilePath, "adguard"); err != nil {
+		convertCtx, convertCancel := context.WithTimeout(a.GlobalContext, 5*time.Minute)
+		defer convertCancel()
+
+		if err := a.RuleConverter.Convert(convertCtx, rawFilePath, srsFilePath, "adguard"); err != nil {
 			return fmt.Errorf("sing-box convert failed: %w", err)
 		}
 	}
