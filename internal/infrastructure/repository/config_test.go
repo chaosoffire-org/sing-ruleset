@@ -33,8 +33,8 @@ func TestFileConfigRepository_GetConfig_Success(t *testing.T) {
 	}
 
 	configPath := filepath.Join(tempDir, "config.json")
-	configData, err := json.Marshal(config)
 
+	configData, err := json.Marshal(config)
 	if err != nil {
 		t.Fatalf("Failed to marshal config: %v", err)
 	}
@@ -45,8 +45,8 @@ func TestFileConfigRepository_GetConfig_Success(t *testing.T) {
 
 	// Test GetConfig
 	repo := NewFileConfigRepository()
-	result, err := repo.GetConfig(configPath)
 
+	result, err := repo.GetConfig(configPath)
 	if err != nil {
 		t.Fatalf("GetConfig() error = %v", err)
 	}
@@ -80,8 +80,8 @@ func TestFileConfigRepository_GetConfig_Success(t *testing.T) {
 
 func TestFileConfigRepository_GetConfig_FileNotFound(t *testing.T) {
 	repo := NewFileConfigRepository()
-	_, err := repo.GetConfig("/nonexistent/path/config.json")
 
+	_, err := repo.GetConfig("/nonexistent/path/config.json")
 	if err == nil {
 		t.Error("GetConfig() should return error for non-existent file")
 	}
@@ -98,8 +98,8 @@ func TestFileConfigRepository_GetConfig_InvalidJSON(t *testing.T) {
 	}
 
 	repo := NewFileConfigRepository()
-	_, err := repo.GetConfig(configPath)
 
+	_, err := repo.GetConfig(configPath)
 	if err == nil {
 		t.Error("GetConfig() should return error for invalid JSON")
 	}
@@ -116,8 +116,8 @@ func TestFileConfigRepository_GetConfig_EmptyFile(t *testing.T) {
 	}
 
 	repo := NewFileConfigRepository()
-	_, err := repo.GetConfig(configPath)
 
+	_, err := repo.GetConfig(configPath)
 	if err == nil {
 		t.Error("GetConfig() should return error for empty file")
 	}
@@ -134,8 +134,8 @@ func TestFileConfigRepository_GetConfig_EmptyJSON(t *testing.T) {
 	}
 
 	repo := NewFileConfigRepository()
-	result, err := repo.GetConfig(configPath)
 
+	result, err := repo.GetConfig(configPath)
 	if err != nil {
 		t.Fatalf("GetConfig() error = %v", err)
 	}

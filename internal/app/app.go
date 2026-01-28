@@ -55,6 +55,7 @@ func (a *Application) GenerateRules(configPath string, outputDir string, workers
 	errCh := make(chan error, length)
 
 	var wg sync.WaitGroup
+
 loop:
 	for category, sources := range config.Sources {
 		for _, source := range sources {
@@ -63,6 +64,7 @@ loop:
 				break loop
 			case sem <- struct{}{}: // Acquire token
 				wg.Add(1)
+
 				go func(errCh chan<- error, cat string, src domain.Source) {
 					defer wg.Done()
 					defer func() { <-sem }() // Release token
@@ -73,7 +75,6 @@ loop:
 					} else {
 						logrus.Infof("Successfully processed %s/%s", cat, src.Name)
 					}
-
 				}(errCh, category, source)
 			}
 		}

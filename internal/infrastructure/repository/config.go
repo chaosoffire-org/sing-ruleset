@@ -22,7 +22,6 @@ func NewFileConfigRepository() *FileConfigRepository {
 // GetConfig reads and parses the configuration file from the given path.
 func (r *FileConfigRepository) GetConfig(path string) (*domain.Config, error) {
 	file, err := os.Open(path)
-
 	if err != nil {
 		return nil, err
 	}

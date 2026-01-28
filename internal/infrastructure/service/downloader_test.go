@@ -41,15 +41,14 @@ func TestHttpDownloader_Download_Success(t *testing.T) {
 	// Test download
 	downloader := NewHTTPDownloader(server.Client())
 	ctx := context.Background()
-	err := downloader.Download(ctx, server.URL, filePath)
 
+	err := downloader.Download(ctx, server.URL, filePath)
 	if err != nil {
 		t.Fatalf("Download() error = %v", err)
 	}
 
 	// Verify file content
 	content, err := os.ReadFile(filePath)
-
 	if err != nil {
 		t.Fatalf("Failed to read downloaded file: %v", err)
 	}
@@ -74,8 +73,8 @@ func TestHttpDownloader_Download_CreatesDirectory(t *testing.T) {
 	// Test download (should create nested directories)
 	downloader := NewHTTPDownloader(server.Client())
 	ctx := context.Background()
-	err := downloader.Download(ctx, server.URL, filePath)
 
+	err := downloader.Download(ctx, server.URL, filePath)
 	if err != nil {
 		t.Fatalf("Download() error = %v", err)
 	}
@@ -122,8 +121,8 @@ func TestHttpDownloader_Download_HTTPError(t *testing.T) {
 
 	downloader := NewHTTPDownloader(server.Client())
 	ctx := context.Background()
-	err := downloader.Download(ctx, server.URL, filePath)
 
+	err := downloader.Download(ctx, server.URL, filePath)
 	if err == nil {
 		t.Error("Download() should return error for HTTP 404")
 	}
@@ -141,8 +140,8 @@ func TestHttpDownloader_Download_HTTPError500(t *testing.T) {
 
 	downloader := NewHTTPDownloader(server.Client())
 	ctx := context.Background()
-	err := downloader.Download(ctx, server.URL, filePath)
 
+	err := downloader.Download(ctx, server.URL, filePath)
 	if err == nil {
 		t.Error("Download() should return error for HTTP 500")
 	}
