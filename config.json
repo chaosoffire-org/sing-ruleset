@@ -139,46 +139,6 @@
         "url": "https://raw.githubusercontent.com/sjhgvr/oisd/main/oisd_big.txt"
       },
       {
-        "name": "Energized Protection Spark",
-        "url": "https://energized.pro/spark/adblock.txt"
-      },
-      {
-        "name": "Energized Protection Blu",
-        "url": "https://energized.pro/blu/adblock.txt"
-      },
-      {
-        "name": "Energized Protection Ultimate",
-        "url": "https://energized.pro/ultimate/adblock.txt"
-      },
-      {
-        "name": "Energized Protection Nsfw",
-        "url": "https://energized.pro/nsfw/adblock.txt"
-      },
-      {
-        "name": "Energized Protection Antipopads-re",
-        "url": "https://energized.pro/antipopads-re/adblock.txt"
-      },
-      {
-        "name": "Energized Protection Social",
-        "url": "https://energized.pro/social/adblock.txt"
-      },
-      {
-        "name": "Energized Protection Extreme",
-        "url": "https://energized.pro/extreme/adblock.txt"
-      },
-      {
-        "name": "Energized Protection Regional",
-        "url": "https://energized.pro/regional/adblock.txt"
-      },
-      {
-        "name": "Abuse_urlhaus",
-        "url": "https://urlhaus.abuse.ch/downloads/hostfile/"
-      },
-      {
-        "name": "OpenPhish",
-        "url": "https://openphish.com/feed.txt"
-      },
-      {
         "name": "hagezi_dns-blocklists - LIGHT",
         "url": "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/light.txt"
       },
