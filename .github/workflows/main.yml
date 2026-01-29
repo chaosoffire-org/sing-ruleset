@@ -38,8 +38,10 @@ jobs:
 
       - name: Run
         run: |
+          WORKER_COUNT=$(( $(nproc) * 16 ))
+
           chmod +x ./sing-ruleset-linux-amd64
-          ./sing-ruleset-linux-amd64 run --workdir . --output output --config config.json
+          ./sing-ruleset-linux-amd64 run --workdir . --workers ${WORKER_COUNT} --output output --config config.json
 
       - name: Commit and Push changes
         env:
