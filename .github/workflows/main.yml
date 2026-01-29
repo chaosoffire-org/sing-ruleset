@@ -26,9 +26,9 @@ jobs:
           go-version: '1.25'
           cache: true
 
-      - name: Install sing-box
+      - name: Install dependents
         run: |
-          go install github.com/sagernet/sing-box/cmd/sing-box@v1.12.0
+          go install github.com/sagernet/sing-box/cmd/sing-box
 
       - name: Test
         run: go test -v ./...
