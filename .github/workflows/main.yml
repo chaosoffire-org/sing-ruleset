@@ -3,7 +3,7 @@ name: Generate and Commit File
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 16 * * *'
+    - cron: '45 15 * * *'
 
 jobs:
   generate-and-commit:
